@@ -1,5 +1,5 @@
 name: "Feature Request"
-about: "Describe a new feature you would like added to the game."
+description: "Describe a new feature you would like added to the game."
 assignees: "PyProgrammer1"
 labels: "Feature Request"
 body:
