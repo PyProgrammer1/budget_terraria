@@ -16,6 +16,6 @@ body:
   attributes:
     label: "E-mail"
     description: "Please provide your e-mail so we can reach out to you about the feature."
-    placeholder: "example@example.com
+    placeholder: "example@example.com"
   validations:
     required: true
