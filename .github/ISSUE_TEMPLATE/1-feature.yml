@@ -1,0 +1,21 @@
+name: "Feature Request"
+about: "Describe a new feature you would like added to the game."
+assignees: "PyProgrammer1"
+labels: "Feature Request"
+body:
+- type: "input"
+  id: "feature"
+  attributes:
+    label: "Feature to be added"
+    description: "What would you like added to the game?"
+    placeholder: "e.g. Inventory access"
+  validations:
+    required: true
+- type: "input"
+  id: "email"
+  attributes:
+    label: "E-mail"
+    description: "Please provide your e-mail so we can reach out to you about the feature."
+    placeholder: "example@example.com
+  validations:
+    required: true
