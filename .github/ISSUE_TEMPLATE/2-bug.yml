@@ -1,0 +1,33 @@
+name: "Bug Report"
+description: "Report a bug here."
+assignees: "PyProgrammer1"
+labels: "Bug"
+body:
+- type: "input"
+  id: "bug"
+  attributes:
+    label: "Bug"
+    description: "What happend?"
+    placeholder: "e.g. Cannot craft sticks"
+  validations:
+    required: true
+- type: "textarea"
+  id: "instructions"
+  attributes:
+    label: "Instructions"
+    description: "If possible, provide any info on how to replicate the bug."
+    value: |
+      1. 
+      2. 
+      3. 
+    render: "bash"
+  validations:
+    required: false
+- type: "input"
+	id: "version"
+ 	attributes:
+		label: "Game version"
+		description: "What version was the game when this bug occured?"
+    placeholder: "e.g. 1.0.0"
+  validations:
+    required: true
