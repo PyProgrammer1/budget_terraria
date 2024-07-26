@@ -79,29 +79,27 @@ woodenAxeRecipe.outputCount = 1;
 
 var menu = "titleScreen";
 
-function start() {
-    setSize(250, 250);
-    img2.setSize(204.8/2, 106/2);
-    img2.setPosition(0, getHeight()-img2.getHeight());
-    bg.setSize(250, 250);
-    bgm.play();
-    bgm.loop = true;
-    img.setSize(480/5, 480/5);
-    img.setPosition(getWidth()/2, getHeight()/2);
-    txt.setPosition(0, getHeight()*(1/4));
-    txt.setText("Budget Terraria");
-    txt2.setPosition(0, txt.getY()+100);
-    txt2.setText("click to start");
-    txt2.setColor(Color.cyan);
-    txt.setColor(Color.green);
-    add(bg);
-    add(txt);
-    add(txt2);
-    add(img);
-    add(img2);
-    if(menu == "titleScreen") {
-        mouseClickMethod(startLoading);
-    }
+setSize(250, 250);
+img2.setSize(204.8/2, 106/2);
+img2.setPosition(0, getHeight()-img2.getHeight());
+bg.setSize(250, 250);
+bgm.play();
+bgm.loop = true;
+img.setSize(480/5, 480/5);
+img.setPosition(getWidth()/2, getHeight()/2);
+txt.setPosition(0, getHeight()*(1/4));
+txt.setText("Budget Terraria");
+txt2.setPosition(0, txt.getY()+100);
+txt2.setText("click to start");
+txt2.setColor(Color.cyan);
+txt.setColor(Color.green);
+add(bg);
+add(txt);
+add(txt2);
+add(img);
+add(img2);
+if(menu == "titleScreen") {
+    mouseClickMethod(startLoading);
 }
 
 function startLoading() {
