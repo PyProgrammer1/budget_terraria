@@ -1,4 +1,4 @@
 # Budget Terraria
 This is a project I was working on for a summer camp. It is a 2d version of Minecraft.
 ## **UNDER DEVELOPMENT**
-[Working Link](https://codehs.com/sandbox/bennettwatel/bennettwatelcodehsme)
+[Working Link](https://bennettwatel.codehs.me/)
