@@ -8,7 +8,6 @@ let img2 = new WebImage("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com
 let blockWidth = 25
 let block = new Rectangle(blockWidth, blockWidth);
 let blockMap = new Grid(10, 10);
-let running = true;
 blockMap.initFromArray([
     ["grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock"],
     ["grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock"],
@@ -41,6 +40,15 @@ class Item {
         }
     }
 }
+class Entity {
+    constructor(name, hex, life, ai, type) {
+        this.name = name;
+        this.hex = hex;
+        this.life = life;
+        this.ai = ai;
+        this.type = type;
+    }
+}
 ////////////////////////////////////////////
 let dirt = new Block("Dirt", "#8b4513", 0.1, 1, "shovel");
 let grassBlock = new Block("Grass Block", "#00ff00", 0.1, 1, "shovel");
@@ -53,6 +61,9 @@ let ironPickaxe = new Item("Iron Pickaxe", "https://static.wikia.nocookie.net/mi
 let woodenAxe = new Item("Wooden Axe", "https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/56/Wooden_Axe_JE2_BE2.png/revision/latest?cb=20200217234355", "axe", 0.2);
 let stoneAxe = new Item("Stone Axe", "https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/02/Stone_Axe_JE2_BE2.png/revision/latest?cb=20200217234417", "axe", 0.5);
 let ironAxe = new Item("Iron Axe", "https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/5e/Iron_Axe_JE5_BE2.png/revision/latest?cb=20200217234438", "axe", 1.2);
+let player = new Entity("Player", "#8b4513", 20, false, "player");
+let chicken = new Entity("Chicken", "#ffffff", 6, true, "mob:passive");
+let cow = new Entity("Cow", "#8b4513", 10, true, "mob:passive");
 ////////////////////////////////////////////
 let craftingTableRecipe = new Grid(2, 2);
 craftingTableRecipe.initFromArray([
