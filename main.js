@@ -199,39 +199,8 @@ function renderBlock(x, y, type) {
 function gameTick() {
     for(let i = 0; i < blockMap.numCols(); i++) {
         for(let j = 0; j < blockMap.numRows(); j++) {
-            renderBlock(0, 0, blockMap.get(i, j));
+            renderBlock(i*blockWidth, j*blockWidth, blockMap.get(i, j));
         }
     }
 }
 
-function findBlockLeftPosX(x, blockWidth) {
-    return(x + blockWidth);
-}
-
-function findBlockLeftPosY(y) {
-    return(y);
-}
-
-function findBlockRightPosX(x, blockWidth) {
-    return(x + blockWidth);
-}
-
-function findBlockRightPosY(y) {
-    return(y);
-}
-
-function findBlockBottomPosX(x) {
-    return(x);
-}
-
-function findBlockBottomPosY(y, blockHeight) {
-    return(y + blockHeight);
-}
-
-function findBlockTopPosX(x) {
-    return(x);
-}
-
-function findBlockTopPosY(y, blockHeight) {
-    return(y - blockHeight);
-}
