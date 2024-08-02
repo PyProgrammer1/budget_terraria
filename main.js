@@ -5,30 +5,48 @@ let img = new WebImage("https://vignette.wikia.nocookie.net/minecraft/images/0/0
 let bgm = new Audio("https://codehs.com/uploads/aeb2d92e81affc5d76735851eb48e792")
 let bg = new WebImage("https://th.bing.com/th/id/OIP.x0j5cwlwHtgK5I0RsfF31AHaHa?rs=1&pid=ImgDetMain");
 let img2 = new WebImage("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ed9a9802-5f2e-4391-9fb0-9e3e501114ef/d7k1c60-fad8370b-100e-40e3-b492-6c2d917a967e.png/v1/fill/w_1024,h_530,q_80,strp/minecraft_sheep_by_foxcroft4321_d7k1c60-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTMwIiwicGF0aCI6IlwvZlwvZWQ5YTk4MDItNWYyZS00MzkxLTlmYjAtOWUzZTUwMTExNGVmXC9kN2sxYzYwLWZhZDgzNzBiLTEwMGUtNDBlMy1iNDkyLTZjMmQ5MTdhOTY3ZS5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.I1oIFfqFirUmbSa1b38IxM660uVMIQRFAiRca4h_0QY");
-let block = new Rectangle(31.25, 31.25);
+let blockWidth = 25
+let block = new Rectangle(blockWidth, blockWidth);
+let blockMap = new Grid(10, 10);
+let running = true;
+blockMap.initFromArray([
+    ["grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock"],
+    ["grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock"],
+    ["grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock"],
+    ["grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock"],
+    ["grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock"],
+    ["grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock"],
+    ["grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock"],
+    ["grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock"],
+    ["grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock", "grassBlock"]
+]);
 ////////////////////////////////////////////
-function Block(name, r, g, b, blastResistiance, hardness, mineableWith) {
-    this.name = name;
-    this.color = new Color(r, g, b);
-    this.blastResistiance = blastResistiance;
-    this.hardness = hardness;
-    this.tool = mineableWith;
+class Block {
+    constructor(name, hex, blastResistiance, hardness, mineableWith) {
+        this.name = name;
+        this.color = hex;
+        this.blastResistiance = blastResistiance;
+        this.hardness = hardness;
+        this.tool = mineableWith;
+    }
 }
 
-function Item(name, texture, toolType, miningSpeed) {
-    this.name = name;
-    this.texture = new WebImage(texture);
-    if(toolType != null && miningSpeed != null) {
-        this.toolType = toolType;
-        this.miningSpeed = miningSpeed;
+class Item {
+    constructor(name, texture, toolType, miningSpeed) {
+        this.name = name;
+        this.texture = new WebImage(texture);
+        if(toolType != null && miningSpeed != null) {
+            this.toolType = toolType;
+            this.miningSpeed = miningSpeed;
+        }
     }
 }
 ////////////////////////////////////////////
-let dirt = new Block("Dirt", 139, 69, 19, 0.1, 1, "shovel");
-let grassBlock = new Block("Grass Block", 0, 255, 0, 0.1, 1, "shovel");
-let stone = new Block("Stone", 100, 100, 100, 3, 5, "pickaxe");
-let cobblestone = new Block("Cobblestone", 150, 150, 150, 3, 5, "pickaxe");
-let craftingTable = new Block("Crafting Table", 213, 161, 17, 1.5, 2, "axe")
+let dirt = new Block("Dirt", "#8b4513", 0.1, 1, "shovel");
+let grassBlock = new Block("Grass Block", "#00ff00", 0.1, 1, "shovel");
+let stone = new Block("Stone", "#646464", 3, 5, "pickaxe");
+let cobblestone = new Block("Cobblestone", "#969696", 3, 5, "pickaxe");
+let craftingTable = new Block("Crafting Table", "#966411", 1.5, 2, "axe")
 let woodenPickaxe = new Item("Wooden Pickaxe", "https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d2/Wooden_Pickaxe_JE3_BE3.png/revision/latest?cb=20200226194132", "pickaxe", 0.2);
 let stonePickaxe = new Item("Stone Pickaxe", "https://static.wikia.nocookie.net/minecraft_gamepedia/images/c/c4/Stone_Pickaxe_JE2_BE2.png/revision/latest?cb=20200217234007", "pickaxe", 0.5);
 let ironPickaxe = new Item("Iron Pickaxe", "https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d1/Iron_Pickaxe_JE3_BE2.png/revision/latest?cb=20200105053011", "pickaxe", 1.2);
@@ -79,27 +97,29 @@ woodenAxeRecipe.outputCount = 1;
 
 var menu = "titleScreen";
 
-setSize(250, 250);
-img2.setSize(204.8/2, 106/2);
-img2.setPosition(0, getHeight()-img2.getHeight());
-bg.setSize(250, 250);
-bgm.play();
-bgm.loop = true;
-img.setSize(480/5, 480/5);
-img.setPosition(getWidth()/2, getHeight()/2);
-txt.setPosition(0, getHeight()*(1/4));
-txt.setText("Budget Terraria");
-txt2.setPosition(0, txt.getY()+100);
-txt2.setText("click to start");
-txt2.setColor(Color.cyan);
-txt.setColor(Color.green);
-add(bg);
-add(txt);
-add(txt2);
-add(img);
-add(img2);
-if(menu == "titleScreen") {
-    mouseClickMethod(startLoading);
+function start() {
+    setSize(250, 250);
+    img2.setSize(204.8/2, 106/2);
+    img2.setPosition(0, getHeight()-img2.getHeight());
+    bg.setSize(250, 250);
+    bgm.play();
+    bgm.loop = true;
+    img.setSize(480/5, 480/5);
+    img.setPosition(getWidth()/2, getHeight()/2);
+    txt.setPosition(0, getHeight()*(1/4));
+    txt.setText("Budget Terraria");
+    txt2.setPosition(0, txt.getY()+100);
+    txt2.setText("click to start");
+    txt2.setColor(Color.cyan);
+    txt.setColor(Color.green);
+    add(bg);
+    add(txt);
+    add(txt2);
+    add(img);
+    add(img2);
+    if(menu == "titleScreen") {
+        mouseClickMethod(startLoading);
+    }
 }
 
 function startLoading() {
@@ -150,17 +170,27 @@ function keys(e) {
 }
 
 function startGame(gamemode) {
-    renderBlock(0, 0, "dirt")
+    setTimeout(1000, function() {
+        gameTick();
+    });
 }
 
 function renderBlock(x, y, type) {
-    if(type == dirt) {
+    if(type == "dirt") {
         block.setColor(dirt.color);
-    } else if(type == grassBlock) {
+    } else if(type == "grassBlock") {
         block.setColor(grassBlock.color);
     }
     block.setPosition(x, y);
     add(block);
+}
+
+function gameTick() {
+    for(let i = 0; i < blockMap.numCols(); i++) {
+        for(let j = 0; j < blockMap.numRows(); j++) {
+            renderBlock(0, 0, blockMap.get(i, j));
+        }
+    }
 }
 
 function findBlockLeftPosX(x, blockWidth) {
